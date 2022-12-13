@@ -11,33 +11,89 @@
 
 // Exercise 1. Write a function called prependToString, which accepts two strings.
 // The function should return a new string with the second string prepended to the first string.
+
+
+const prependToString = (str1, str2) => {
+    //return a new string that is a concatenation of str2 and str1
+    let newStr = str2 + str1;
+    return newStr;
+}
 // Examples:
-// prependToString('awesome', 'very') // --> 'veryawesome'
-// prependToString('world', 'hello ') // --> 'hello world'
-// prependToString('nothing', '') // --> 'nothing'
+console.log(prependToString('awesome', 'very')); // --> 'veryawesome'
+console.log(prependToString('world', 'hello ')); // --> 'hello world'
+console.log(prependToString('nothing', '')); // --> 'nothing'
 
 // Exercise 2. Write a function called stringIncludes, which accepts two strings: the first string is a word and the second string is a single character.
 // The function should return true if the first string includes the character, otherwise it should return false.
 // IMPORTANT: Do not use the built in string.includes() function!
+
+const stringIncludes = (str, char) => {
+    //loop thorugh string to find char
+    for(let i = 0; i < str.length; i++){
+        //if the string's character at index is equal to char, return true
+        if(str[i] === char){
+            return true
+        }
+    }
+    //else return false
+    return false;
+}
+
 // Examples:
-// stringIncludes('awesome', 'e'); // --> true
-// stringIncludes('awesome', 'z'); // --> false
+console.log(stringIncludes('awesome', 'e')); // --> true
+console.log(stringIncludes('awesome', 'z')); // --> false
 
 // Exercise 3. Write a function called stringLastIndexOf, which accepts two strings: the first is a word and the second is a single character.
 // The function should return the last index at which the character exists or -1 if the character is not found.
 // IMPORTANT: Do not use the built in "string".lastIndexOf() function!
-// Examples:
-// stringLastIndexOf('awesome', 'e'); // --> 6
-// stringLastIndexOf('awesome', 'z'); // --> -1
+
+const stringLastIndexOf = (str, char) => {
+    //find last index of the character in a string = or the first index of the char while going backwards = (decrement for loop);
+    // if I go backwards through the string, I can just return the first instance of the char;
+    //i = string length, while i is bigger than -1 because index begins at 0, and decrement i
+    for(let i = str.length - 1; i > -1; i--){
+        if(str[i] === char){
+            return i;
+        }
+    }
+    //else return -1
+    return -1;
+}
+
+//Examples:
+
+console.log(stringLastIndexOf('awesome', 'e')); // --> 6
+console.log(stringLastIndexOf('awesome', 'z')); // --> -1
 
 // Exercise 4. Write a function called removeFromString, which accepts a string, a starting index (number) and a number of characters to remove.
 // The function should return a new string with the characters removed.
+
+function removeFromString(str, index, remove){
+
+    //had to google - it works and I kind of get how it works...
+    //this part I was able to figure out on my own - extracting from str[0] to str[index]
+    let newStr = str.slice(0, index);
+
+    //this is where things get a bit tricky for me... w3 says slice() extracts a part of a string and returns the extracted part
+    //but why am I to add index and remove?? ok maybe I get it now:
+
+    //the answer is: this part removes x amount of characters from the beginning of the string...like split(1) removes the first character
+    //from the beginning of the string. so removing the "remove" amount removes that much from the beginning of the string 
+    //+ removing the "index" amount removes the "index" amount from the beginning of the string, leaving the tail end of the string that didn't get removed
+    //and then: to finish it up, we add the newStr (head part of the string, extracted) and str2 (tail end, extracted).
+    let str2 = str.slice(index + remove);
+
+    // console.log('new ' + newStr);
+    // console.log('second ' + str2);
+    return newStr + str2;
+}
+
 // Examples:
-// removeFromString('Elie', 2, 2) // --> 'El'
-// removeFromString('Elie', 0, 1) // --> 'lie'
-// removeFromString('Hello School', 0, 6) // --> 'School'
-// removeFromString('Hello School', 2, 4) // --> 'HeSchool'
-// removeFromString('Hello School', 6, 400) // --> 'Hello '
+console.log(removeFromString('Elie', 2, 2)); // --> 'El'
+console.log(removeFromString('Elie', 0, 1)); // --> 'lie'
+console.log(removeFromString('Hello School', 0, 6)); // --> 'School'
+console.log(removeFromString('Hello School', 2, 4)); // --> 'HeSchool'
+console.log(removeFromString('Hello School', 6, 400)); // --> 'Hello '
 
 // Exercise 5. Write a function called indexOf, which accepts an array and a number.
 // The function should return the first index at which the value exists or -1 if the value is not found.
