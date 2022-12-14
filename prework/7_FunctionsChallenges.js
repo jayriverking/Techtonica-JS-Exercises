@@ -123,14 +123,11 @@ console.log(indexOf(arr3, 10)); // --> -1
 // Exercise 6. Write a function called includes which accepts a collection, a value, and an optional starting index. The function should return true if the value exists in the collection when we search starting from the starting index. Otherwise, it should return false.
 // The collection can be a string, an array, or an object. If the collection is a string or array, the third parameter is a starting index for where to search from. If the collection is an object, the function searches for the value among values in the object; since objects have no sort order, the third parameter is ignored.
 
-function includes(collection, value, index) {
-    
-  // if no index provided, make it 0
-  if (!index) {
-    index = 0;
-  }
+function includes(collection, value, index = 0) {
+
+ 
   //if string or array - iterate through with a for loop
-  if (typeof collection === 'string' || typeof collection === 'array') {
+  if ((typeof collection === 'string') || (typeof collection === 'array')) {
     //for loop - starting index = index
     for (let i = index; i < collection.length; i++) {
 
@@ -140,7 +137,7 @@ function includes(collection, value, index) {
     }
   }
 
-  if (typeof collection === 'object') {
+  else if (typeof collection === 'object') {
     //using for in loop to iterate through object
     for (let item in collection) {
       if (collection[item] === value) {
@@ -154,7 +151,7 @@ function includes(collection, value, index) {
 
 // Examples:
 console.log(includes([1, 2, 3], 1)); // --> true
-console.log(includes([1, 2, 3], 1, 2)); // --> false - this returns "true" for me even though the last test case gives me a "false" and I don't know why
+console.log(includes([1, 2, 3], 1, 2)); // --> false - this returns "true" for me and I'm not sure why
 console.log(includes([1, 2, 3], 6)); // --> false
 console.log(includes({ 'a': 1, 'b': 2 }, 1)); // --> true
 console.log(includes({ 'a': 1, 'b': 2 }, 'a')); // --> false
