@@ -124,37 +124,40 @@ console.log(indexOf(arr3, 10)); // --> -1
 // The collection can be a string, an array, or an object. If the collection is a string or array, the third parameter is a starting index for where to search from. If the collection is an object, the function searches for the value among values in the object; since objects have no sort order, the third parameter is ignored.
 
 function includes(collection, value, index = 0) {
-
- 
-  //if string or array - iterate through with a for loop
-  if ((typeof collection === 'string') || (typeof collection === 'array')) {
-    //for loop - starting index = index
-    for (let i = index; i < collection.length; i++) {
-
-      if (collection[i] === value) {
-        return true;
+  //check type of collection
+   let type = typeof collection;
+    //because typeof array was giving back 'object', I added a 
+    //method to check if collection is an array
+    let isArr = Array.isArray(collection);
+    //if string or array - iterate through with a for loop
+    if (type === 'string' || isArr) {
+      //for loop - starting index = index
+      for (let i = index; i < collection.length; i++) {
+  
+        if (collection[i] === value) {
+          return true;
+        }
       }
     }
-  }
-
-  else if (typeof collection === 'object') {
-    //using for in loop to iterate through object
-    for (let item in collection) {
-      if (collection[item] === value) {
-        return true;
+  
+    else if (type === 'object') {
+      //using for in loop to iterate through object
+      for (let item in collection) {
+        if (collection[item] === value) {
+          return true;
+        }
       }
     }
+    //otherwise return false
+    return false;
   }
-  //otherwise return false
-  return false;
-}
-
-// Examples:
-console.log(includes([1, 2, 3], 1)); // --> true
-console.log(includes([1, 2, 3], 1, 2)); // --> false - this returns "true" for me and I'm not sure why
-console.log(includes([1, 2, 3], 6)); // --> false
-console.log(includes({ 'a': 1, 'b': 2 }, 1)); // --> true
-console.log(includes({ 'a': 1, 'b': 2 }, 'a')); // --> false
-console.log(includes('abcd', 'b')); // --> true
-console.log(includes('abcd', 'e')); // --> false
-console.log(includes('abcd', 'a', 2)); // --> false
+  
+  // Examples:
+  console.log(includes([1, 2, 3], 1)); // --> true
+  console.log(includes([1, 2, 3], 1, 2)); // --> false 
+  console.log(includes([1, 2, 3], 6)); // --> false
+  console.log(includes({ 'a': 1, 'b': 2 }, 1)); // --> true
+  console.log(includes({ 'a': 1, 'b': 2 }, 'a')); // --> false
+  console.log(includes('abcd', 'b')); // --> true
+  console.log(includes('abcd', 'e')); // --> false
+  console.log(includes('abcd', 'a', 2)); // --> false
