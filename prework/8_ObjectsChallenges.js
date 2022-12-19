@@ -113,20 +113,42 @@ const stringFromObject = (obj) => {
 }
 
 // Examples:
-console.log(stringFromObject({ a: 1, b: '2' }));
-// "a = 1, b = 2"
-console.log(stringFromObject({ name: 'Elie', job: 'Instructor', isCatOwner: false }));
-// "name = Elie, job = Instructor, isCatOwner = false"
-console.log(stringFromObject({})); // ""
+// console.log(stringFromObject({ a: 1, b: '2' }));
+// // "a = 1, b = 2"
+// console.log(stringFromObject({ name: 'Elie', job: 'Instructor', isCatOwner: false }));
+// // "name = Elie, job = Instructor, isCatOwner = false"
+// console.log(stringFromObject({})); // ""
 
 // Exercise 6. Write a function called minMaxKeyInObject that accepts an object with numeric keys.*
 // The function should return an array with the following format: [lowestKey, highestKey]
 
+const minMaxKeyInObject = (obj) => {
+    let arr = [];
+    let minimum = 10000;
+    let maximum = -1;
+    for(let key in obj){
+        //keys can only be string, but adding a + sign will convert them to numbers 
+        //- that's what I'm doing here in order to compare the numerical values of the keys
+        let keyNum = +key;
+
+        if(keyNum > maximum){
+            maximum = key;
+        }
+        if(keyNum < minimum){
+            minimum = key;
+        }
+        // console.log(maximum, key);
+        // console.log(maximum);
+       
+    }
+    arr.push(minimum, maximum);
+    return arr;
+}
 
 // Examples:
-// minMaxKeyInObject({ 2: 'a', 7: 'b', 1: 'c', 10: 'd', 4: 'e' });
-// [1, 10]
-// minMaxKeyInObject({ 1: 'Elie', 4: 'Matt', 2: 'Tim' });
+console.log(minMaxKeyInObject({ 2: 'a', 7: 'b', 1: 'c', 10: 'd', 4: 'e' }));
+// [1, 10] == this gives me 7.. why?
+console.log(minMaxKeyInObject({ 1: 'Elie', 4: 'Matt', 2: 'Tim' }));
 // [1, 4]
 
 
