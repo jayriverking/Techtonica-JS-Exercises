@@ -147,7 +147,8 @@ const minMaxKeyInObject = (obj) => {
 
 // Examples:
 console.log(minMaxKeyInObject({ 2: 'a', 7: 'b', 1: 'c', 10: 'd', 4: 'e' }));
-// [1, 10] == this gives me 7.. why?
+// [1, 10] - fixed the issue of getting [1, 7] - it was because my keys were still strings!
+//I converted my keys to numbers and now it gives me [1, 10]
 console.log(minMaxKeyInObject({ 1: 'Elie', 4: 'Matt', 2: 'Tim' }));
 // [1, 4]
 
