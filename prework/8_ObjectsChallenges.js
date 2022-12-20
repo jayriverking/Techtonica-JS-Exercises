@@ -15,7 +15,7 @@
     const keys = (obj) => {
         let keyArr = [];
         for (let key in obj){
-            //obj[key] will give the value - to ge the key, see below code!
+            //obj[key] will give the value - to get the key, see below code!
             keyArr.push(key)
         }
         return keyArr;
