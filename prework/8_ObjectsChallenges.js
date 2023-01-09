@@ -99,7 +99,6 @@ const pluck = (arr, key) => arr.map(i => i[key]);
 // console.log(pluck([{ name: "Tim" }, { name: "Matt" }, { name: "Elie" }],'name'));
 // // ["Tim", "Matt", "Elie"]
 console.log(pluck([{ name: "Tim", isBoatOwner: true }, { name: "Matt", isBoatOwner: false }, { name: "Elie" }],'isBoatOwner'));
-// // [true, false, undefined] --> [ undefined, true, undefined, false, undefined ] is returned because this function cannot differentiate keys
 
 // Exercise 5. Write a function called stringFromObject that generates a string from an object's key/value pairs.
 // The format should be "key = value, key = value".
