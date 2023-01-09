@@ -80,7 +80,7 @@ const pluck = (arrObj, keyName) => {
     let valArr = [];
     for(let i = 0; i < arrObj.length; i++){
    for(let key in arrObj[i]){
-    if(key == keyName){
+    if(key){
         valArr.push(arrObj[i][key]);
     }
     else{
