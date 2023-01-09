@@ -76,25 +76,29 @@ const entries = (obj) => {
 // Exercise 4. Write a function called pluck, which takes an array of objects and the name of a key.
 // The function should return an array containing the value associated with that key for each object, or undefined if that key is not present in the object.
 
-const pluck = (arrObj, keyName) => {
-    let valArr = [];
-    for(let i = 0; i < arrObj.length; i++){
-   for(let key in arrObj[i]){
-    if(key){
-        valArr.push(arrObj[i][key]);
-    }
-    else{
-        valArr.push(undefined);
-    }
-   }}
-    return valArr;
+// const pluck = (arrObj, keyName) => {
+//     let valArr = [];
+//     for(let i = 0; i < arrObj.length; i++){
+//    for(let key in arrObj[i]){
+//     if(key){
+//         if(key == keyName)
+//         valArr.push(arrObj[i][key]);
+//     }
+//     else if (!keyName){
+//         valArr.push(undefined);
+//     }
+//    }}
+//     return valArr;
     
-}
+// }
+
+const pluck = (arr, key) => arr.map(i => i[key]);
+
 
 // // Examples:
 // console.log(pluck([{ name: "Tim" }, { name: "Matt" }, { name: "Elie" }],'name'));
 // // ["Tim", "Matt", "Elie"]
-// console.log(pluck([{ name: "Tim", isBoatOwner: true }, { name: "Matt", isBoatOwner: false }, { name: "Elie" }],'isBoatOwner'));
+console.log(pluck([{ name: "Tim", isBoatOwner: true }, { name: "Matt", isBoatOwner: false }, { name: "Elie" }],'isBoatOwner'));
 // // [true, false, undefined] --> [ undefined, true, undefined, false, undefined ] is returned because this function cannot differentiate keys
 
 // Exercise 5. Write a function called stringFromObject that generates a string from an object's key/value pairs.
